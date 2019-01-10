@@ -9,3 +9,5 @@ class FirstComponent extends Component{
         </div>
     }
 }
+
+export default FirstComponent
