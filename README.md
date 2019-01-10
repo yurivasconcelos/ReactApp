@@ -5,8 +5,8 @@
 ## Initialization [>](/fundamentals/init/)
 - [NPM Commmands](/fundamentals/init/0-npmcommands)
 - [Zero Config](/fundamentals/init/1-zeroConfig) - using react cdn 
-- [Creating package.json](/fundamentals/init/2-package-json)
-- [Add Yarn](/fundamentals/init/3-Add-Yarn)
+- [Creating package.json](/fundamentals/init/2-package-json/_readme.md)
+- [Add Yarn](/fundamentals/init/3-Add-Yarn/_readme.md)
 - [Config babel](/fundamentals/init/4-configBabel)
 
 ## JSX [>](/fundamentals/JSX/)
