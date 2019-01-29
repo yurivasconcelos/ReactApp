@@ -1,6 +1,6 @@
 import React from 'react';
 
-const StatelessComponent = () => {
+const Stateless = () => {
     return (
         <div style={{backgroundColor: "grey", width: "300px"}}>
             <p>Stateless rendered</p>
@@ -8,4 +8,4 @@ const StatelessComponent = () => {
     )
 }
 
-export default StatelessComponent
+export default Stateless

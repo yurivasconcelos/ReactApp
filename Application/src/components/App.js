@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ClassBasedComponent from './ClassBasedComponent'
-import StatelessComponent from './StatelessComponent'
+import ClassBasedComponent from './ClassBased'
+import StatelessComponent from './Stateless'
 
 class App extends Component {
   render() {

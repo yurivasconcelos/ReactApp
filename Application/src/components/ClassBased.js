@@ -1,6 +1,6 @@
 import React from "react";
 
-class ClassBasedComponent extends React.Component {
+class ClassBased extends React.Component {
   render() {
     return (
       <div style={{width: "300px", backgroundColor: "grey"}}>
@@ -10,4 +10,4 @@ class ClassBasedComponent extends React.Component {
   }
 }
 
-export default ClassBasedComponent;
+export default ClassBased;
