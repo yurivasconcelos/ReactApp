@@ -22,23 +22,18 @@ var MyComponent = React.createClass({
 });
 */
 
-
-
 //Directly on Class via class property
-//class property syntax is a Stage 3 proposal so it’s not part of the official JS spec yet 
+//class property syntax is a Stage 3 proposal so it’s not part of the official JS spec yet
 
 // class App extends React.Component {
 //     state = {
 //       name: "Yuri"
-//     
+//
 //     }
 //     render() {
 //       // whatever you like
 //     }
 //   }
-
-
-
 
 import React, { Component } from "react";
 
@@ -53,11 +48,19 @@ import React, { Component } from "react";
 // }
 
 class StateComponent extends Component {
-    state = { name: "yuri" };
-    
-    render() {
-      return <div>{this.state.name}</div>;
-    }
+  state = { name: "yuri" };
+
+  render() {
+    return (
+      <div style={{backgroundColor: "grey", width: "300px" }}>
+        {this.state.name} <button onClick={this.handleClick}>set state</button>
+      </div>
+    );
   }
+
+  handleClick = () => {
+    this.setState(prevState => ({ name: "abc" }));
+  };
+}
 
 export default StateComponent;
