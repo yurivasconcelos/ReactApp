@@ -53,6 +53,7 @@ class StateComponent extends Component {
   render() {
     return (
       <div style={{backgroundColor: "grey", width: "300px" }}>
+      <p>State</p>
         {this.state.name} <button onClick={this.handleClick}>set state</button>
       </div>
     );

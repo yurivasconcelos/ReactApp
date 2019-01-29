@@ -3,11 +3,14 @@ import JSXComponent from './JSXComponent';
 import ClassBased from './ClassBased'
 import Stateless from './Stateless'
 import Props from './Props'
+import PropTypes from './PropTypes';
 import RenderChildren from './RenderChildren';
 import StateComponent from './StateComponent';
 import Event from './Event';
 import EventParent from './EventParent';
 import Forms from './Forms'
+import PropTypesComponent from './PropTypes';
+import RefComponent from './RefComponent';
 
 class App extends Component {
   render() {
@@ -17,11 +20,13 @@ class App extends Component {
         <Stateless/>
         <JSXComponent/>
         <Props firstName="Prop"/>
+        <PropTypesComponent name="yuri"></PropTypesComponent>
         <RenderChildren><p>children</p></RenderChildren>
         <StateComponent/>
         <Event id="1"/>
         <EventParent/>
         <Forms/>
+        <RefComponent/>
       </div>
     );
   }

@@ -13,6 +13,8 @@ export default class Forms extends React.Component {
   render() {
     return (
       <div style={{ backgroundColor: "lightgrey", width: "300px" }}>
+      <p>Forms</p>
+      
         <form>
           <div id="single">
             <input

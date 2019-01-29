@@ -6,7 +6,7 @@ export default class Event extends Component {
   render() {
     return (
       <div style={{backgroundColor: "grey", width: "300px"}}>
-        
+        <p>Event</p>
         <button id="myId" onClick={(e) => this.handleClick(this.props.id, e)}>Click</button>
 
       </div>

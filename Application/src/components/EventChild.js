@@ -6,7 +6,8 @@ export default class EventChild extends Component {
   
   render() {
     return (
-      <div style={{backgroundColor: "grey", width: "300px"}}>
+      <div style={{backgroundColor: "lightgrey", width: "300px"}}>
+      <p>Event child / parent</p>
         
         <button id="myId" onClick={(e) => this.props.parentClick(e, "2")}>Click</button>
 
