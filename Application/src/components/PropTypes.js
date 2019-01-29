@@ -12,8 +12,15 @@ class PropTypesComponent extends React.Component {
 }
 
 PropTypesComponent.propTypes = {
-    name: PropTypes.number
+    name: PropTypes.string
+    //children: PropTypes.element.isRequired
 };
+
+//Default Props
+PropTypesComponent.defaultProps = {
+    name: "my default value"
+};
+
 
 /*  PropTypes exports a range of validators that can be used to make sure the data you receive is valid. 
     In this example, we’re using PropTypes.number. 
