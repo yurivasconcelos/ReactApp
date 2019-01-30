@@ -12,6 +12,8 @@ import PropTypesComponent from './PropTypes';
 import RefComponent from './RefComponent';
 import MouseTracker from './MouseTrackerComponent';
 import FragmentComponent from './FragmentComponent';
+import StyleInline from './StyleInline';
+import StyleFromOutside from './StyleFromOutside'
 
 class App extends Component {
   render() {
@@ -30,6 +32,8 @@ class App extends Component {
         <RefComponent/>
         <MouseTracker/>
         <FragmentComponent/>
+        <StyleInline/>
+        <StyleFromOutside/>
       </div>
     );
   }
