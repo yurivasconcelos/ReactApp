@@ -14,6 +14,12 @@ import MouseTracker from './MouseTrackerComponent';
 import FragmentComponent from './FragmentComponent';
 import StyleInline from './StyleInline';
 import StyleFromOutside from './StyleFromOutside'
+import StyledWidthSass from './StyledWidthSass'
+import StyledComponent from './StyledComponent'
+
+import '../styles/testingsass.scss';
+
+
 
 class App extends Component {
   render() {
@@ -34,6 +40,8 @@ class App extends Component {
         <FragmentComponent/>
         <StyleInline/>
         <StyleFromOutside/>
+        <StyledWidthSass/>
+        <StyledComponent/>
       </div>
     );
   }
