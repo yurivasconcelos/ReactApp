@@ -1,7 +1,37 @@
+//read ../fundamentals/HOC/readme.md in this project.
 
-/*
-        Concretely, a higher-order component is a function that takes a component and returns a new component.
+import React, { Component } from 'react'
 
-        const NewComponent = higherOrderComponent(WrappedComponent);
+export default class HighOrderComponent extends Component {
+  render() {
+    return (
+      <div>
+        <NewComponent></NewComponent>
+      </div>
+    )
+  }
+}
 
-*/
+const ComponentToBeWrapped = () => {
+  return (
+    <div>
+      <p>New Component</p>
+    </div>
+  )
+}
+
+const TheWrapperComponent = (Component) => {
+  return class extends React.Component{
+    render(){
+      return (
+        <div>
+          <p>new wrapped</p>
+          <Component/>
+        </div>
+      )
+    }
+  }
+
+}
+
+const NewComponent = TheWrapperComponent(ComponentToBeWrapped);

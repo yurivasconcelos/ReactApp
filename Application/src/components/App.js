@@ -16,8 +16,11 @@ import StyleInline from './StyleInline';
 import StyleFromOutside from './StyleFromOutside'
 import StyledWidthSass from './StyledWidthSass'
 import StyledComponent from './StyledComponent'
-
+import HighOrderComponent from './HighOrderComponent'
+import HighOrderUseBorder from './HighOrderUseBorder';
 import '../styles/testingsass.scss';
+
+
 
 
 
@@ -42,6 +45,8 @@ class App extends Component {
         <StyleFromOutside/>
         <StyledWidthSass/>
         <StyledComponent/>
+        <HighOrderComponent/>
+        <HighOrderUseBorder/>
       </div>
     );
   }
