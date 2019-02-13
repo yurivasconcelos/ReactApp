@@ -12,6 +12,7 @@ import PropTypesComponent from './components/PropTypes';
 import RefComponent from './components/RefComponent';
 import MouseTracker from './components/MouseTrackerComponent';
 import Styling from './Styling/Styling';
+import RouterComponent from './Routing/components/RouterComponent';
 import HighOrderComponent from './components/HighOrderComponent'
 import HighOrderUseBorder from './components/HighOrderUseBorder';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
@@ -31,6 +32,7 @@ class App extends Component {
           <Route path="/refs" component={RefComponent} />
           <Route path="/PropTypesComponent" component={PropTypesComponent} />
           <Route path="/StateComponent" component={StateComponent} />
+          <Route path="/Routing" component={RouterComponent} />
           <Route path="/Event" component={Event} />
           <Route path="/EventParent" component={EventParent} />
           <Route path="/styling" component={Styling} /> 
