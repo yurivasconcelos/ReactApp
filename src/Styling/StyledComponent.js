@@ -3,8 +3,6 @@ import styled from 'styled-components'
 
 export default class StyledComponent extends Component {
 
- 
-
   render() {
     return (
       <MyDiv>

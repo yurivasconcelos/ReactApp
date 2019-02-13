@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {styleFromOutside} from '../styles/fromOutside';
+import {styleFromOutside} from './styles/fromOutside';
 
 export default class StyleFromOutside extends Component {
   render() {
