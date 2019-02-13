@@ -1,6 +1,31 @@
 @import './base.scss';
 
-.testingsass{
-    background-color: greenyellow;
-    width: 200px;
+* {
+  margin-left: 15px;
+  
+}
+
+div{
+  margin-top: 15px;
+ 
+}
+
+.testingsass{ background-color: greenyellow; }
+
+.grey { background-color: grey; }
+
+.green{ background-color: green}
+
+.green:hover{
+  border-color: grey;
+  border-style: double;
+}
+
+.black { background-color: black }
+
+.red{ background-color: red }
+
+.border { 
+  border-style: dashed;
+  border-color: magenta;
 }

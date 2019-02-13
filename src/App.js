@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
-import JSXComponent from './JSXComponent';
-import ClassBased from './ClassBased'
-import Stateless from './Stateless'
-import Props from './Props'
-import RenderChildren from './RenderChildren';
-import StateComponent from './StateComponent';
-import Event from './Event';
-import EventParent from './EventParent';
-import Forms from '../Forms/Forms';
-import PropTypesComponent from './PropTypes';
-import RefComponent from './RefComponent';
-import MouseTracker from './MouseTrackerComponent';
-import Styling from '../Styling/Styling';
-import HighOrderComponent from './HighOrderComponent'
-import HighOrderUseBorder from './HighOrderUseBorder';
+import JSXComponent from './components/JSXComponent';
+import ClassBased from './components/ClassBased'
+import Stateless from './components/Stateless'
+import Props from './components/Props'
+import RenderChildren from './components/RenderChildren';
+import StateComponent from './components/StateComponent';
+import Event from './components/Event';
+import EventParent from './components/EventParent';
+import Forms from './Forms/Forms';
+import PropTypesComponent from './components/PropTypes';
+import RefComponent from './components/RefComponent';
+import MouseTracker from './components/MouseTrackerComponent';
+import Styling from './Styling/Styling';
+import HighOrderComponent from './components/HighOrderComponent'
+import HighOrderUseBorder from './components/HighOrderUseBorder';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import 'antd/dist/antd.css'
 
 class App extends Component {
   render() {
