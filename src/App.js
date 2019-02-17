@@ -68,7 +68,7 @@ const Home = () => {
       <Link to="/forms"><Button>Forms</Button></Link> <br />
       <Link to="/HOC"><Button>High Order Component</Button></Link> <br />
       <Link to="/HOC_B"><Button>High Order Component 2</Button></Link> <br />
-      <Link to="/mousetracker"><Button>Mouse Tracker</Button></Link> <br />
+      <Link to="/MouseTracker"><Button>Mouse Tracker</Button></Link> <br />
     </React.Fragment>
     )
 }
