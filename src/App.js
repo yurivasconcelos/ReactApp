@@ -5,7 +5,7 @@ import JSXComponent from './JSX/JSXComponent';
 import ClassBased from './JSX/ClassBased'
 import Stateless from './JSX/Stateless'
 import Props from './JSX/Props'
-import RenderChildren from './JSX/RenderChildren';
+import RenderChildren from './JSX/Children';
 import StateComponent from './JSX/StateComponent';
 import Event from './Events/Event'
 import EventParent from './Events/EventParent'
@@ -18,7 +18,10 @@ import RouterComponent from './Routing/components/RouterComponent';
 import HighOrderComponent from './HOC/HighOrderComponent'
 import HighOrderUseBorder from './HOC/HighOrderUseBorder';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { Button } from 'antd'
+import ErrorComponent from './ErrorBoundary/ErrorBoundaryExample';
+import ErrorComponentLiveExample from './ErrorBoundary/LiveExample';
+import ErrorLiveExample2 from './ErrorBoundary/LiveExample2';
+import { Button } from 'antd';
 import 'antd/dist/antd.css'
 
 class App extends Component {
@@ -43,6 +46,9 @@ class App extends Component {
           <Route path="/HOC" component={HighOrderComponent} />
           <Route path="/HOC_B" component={HighOrderUseBorder} />
           <Route path="/MouseTracker" component={MouseTracker} />
+          <Route path="/Error" component={ErrorComponent}/>
+          <Route path="/Error2" component={ErrorComponentLiveExample}/>
+          <Route path="/Error3" component={ErrorLiveExample2}/>
         </div>
       </Router>
     );
@@ -69,6 +75,9 @@ const Home = () => {
       <Link to="/HOC"><Button>High Order Component</Button></Link> <br />
       <Link to="/HOC_B"><Button>High Order Component 2</Button></Link> <br />
       <Link to="/MouseTracker"><Button>Mouse Tracker</Button></Link> <br />
+      <Link to="/Error"><Button>Error Boundary</Button></Link> <br />
+      <Link to="/Error2"><Button>Error Boundary Live Example</Button></Link> <br />
+      <Link to="/Error3"><Button>Error Boundary Live Example 2</Button></Link> <br />
     </React.Fragment>
     )
 }

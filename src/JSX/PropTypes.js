@@ -3,23 +3,37 @@ import PropTypes from 'prop-types';
 
 class PropTypesComponent extends React.Component {
     render() {
-        return (
-            <div>
-                <h1>Proptypes, {this.props.name}</h1>
-            </div>
+        return ( <
+            div >
+            <
+            h1 > Proptypes, {
+                this.props.name
+            } < /h1> <
+            /div>
         );
     }
 }
 
-PropTypesComponent.propTypes = {
-    name: PropTypes.string
-    //children: PropTypes.element.isRequired
-};
-
 //Default Props
 PropTypesComponent.defaultProps = {
-    name: "my default value"
-};
+    email: PropTypes.string,
+    seats: PropTypes.number,
+    callback: PropTypes.func,
+    isClosed: PropTypes.bool,
+    any: PropTypes.any,
+    //using required
+    name: PropTypes.string.isRequired,
+
+    //custom validation
+    customProp: (props, key, componentName) => {
+        if (!/matchme/.test(props[key])) {
+            return new Error('Validation failed!')
+        }
+
+    }
+}
+
+
 
 
 /*  PropTypes exports a range of validators that can be used to make sure the data you receive is valid. 
