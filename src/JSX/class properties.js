@@ -1,9 +1,7 @@
 //class property syntax is a Stage 3 proposal so it’s not part of the official JS spec yet 
 
 class C extends B {
-
     prop = "something"
-
 }
 
   

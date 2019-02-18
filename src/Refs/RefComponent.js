@@ -19,14 +19,6 @@ export default class RefComponent extends Component {
 }
 
 
-
-
-
-
-
-
-
-
 //You may not use the ref attribute on FUNCTION COMPONENTS because they don’t have instances:
 
 //NOT A REAL CLASS

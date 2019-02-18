@@ -12,8 +12,6 @@ export default class FragmentComponent extends Component {
   }
 }
 
-
-
 /*
 
 Motivation

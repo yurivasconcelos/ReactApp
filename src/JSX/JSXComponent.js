@@ -2,9 +2,9 @@
 /* JSX - Booleans, Null, and Undefined Are Ignored in */
 /* true, false, null, undefined are valid children. They simply don’t render. These JSX  */
 
-import React, { Component } from "react";
+import React from "react";
 
-export default class JSXComponent extends Component {
+export default class JSXComponent extends React.Component {
   render() {
     return (
       <div>
