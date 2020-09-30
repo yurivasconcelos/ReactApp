@@ -1,33 +1,43 @@
 ## React
 
-Easy start: 
-
 ```
-Create the app with babel, all configured, etc - 
-
 npx create-react-app my-app
 npx create-react-app my-app --template typescript
 
 cd my-app
 npm start
-```
-
-
-```javascript
-import React, { useState, useContext, createContext } from "react";
-```
 
 https://reactjs.org/docs/hello-world.html
+```
 
-## how to declare a functional component
+
+
+
+
+## Functional Components -> Creation Examples
+
 ```javascript
-export const Fc = () => {
-  return <div />;
+import React from "react";
+
+const Component1 = () => <div />;
+
+//without return
+const Component2 = () => (
+    <div>
+      <p>A</p>
+    </div>
+  );
 };
+
+const Component3 = () => {
+  return (
+    <div/>
+  )
+}
 
 //or - note the return ()
 
-export const Fc = () => {
+const Fc = () => {
     return (
         <div>
             <p>first component</p>
@@ -36,14 +46,14 @@ export const Fc = () => {
 }
 ```
 
-## how to declare a functional component with props
+## Functional Components -> Props
 ```javascript
-export const FCp = (props: any) => {
+const FCp = (props: any) => {
   return <div>{props}</div>;
 };
 ```
 
-## using event handlers in functional components
+## Functional Components -> Event Handlers
 ```javascript
 export const Fcpevents = () => {
   const handleBtnClick = () => {
@@ -54,7 +64,7 @@ export const Fcpevents = () => {
 ```
 
 
-## using functions outside your component is possible.
+## Functions outside render.
 
 ```javascript
 //just a normal function anywhere
@@ -68,12 +78,15 @@ export const FcpOutside = () => {
 };
 ```
 
+## State in functional components 
+> https://reactjs.org/docs/hooks-intro.html - have alook at useState
 
-## use state in functional components (wasn't possible before, but now with hooks is possible.)
-https://reactjs.org/docs/hooks-intro.html - have alook at useState
+- states were only in class components before, but now with hooks it's possible.
+- they were even called stateless components... now just function components.
+
 
 ```javascript
-// they were even called stateless components before... now just function components.
+import React, {useState} from 'react'
 
 export const FcwState = () => {
   const [person, setPerson] = useState({ name: "", age: 0 });
@@ -165,7 +178,8 @@ class CCStateSet extends React.Component<{name:string}> {
 ```
 
 
-## passing events as props, so the child can do an operation in the main (top level component)
+## Child firing an event in the parent. 
+Passing events as props, so the child can do an operation in the main (top level component)
 
 ```javascript
 export const Main = () => {
@@ -223,7 +237,7 @@ export const SubC = (props: { decideOnClick: any; color: string }) => {
 };
 ```
 
-## using context
+## Context API
 context is used to pass props to the sub-sub-sub components, without having to pass to each of the components.
 - using hooks -> useContext
 
@@ -274,7 +288,7 @@ export const Sub3 = () => {
 };
 ```
 
-## using context part 2
+## Context - Complex
 context is used to pass props to the sub-sub-sub components, without having to pass to each of the components.
 - using hooks -> useContext
 - using state + context all together
@@ -332,6 +346,54 @@ export const Sub3C = () => {
 ```
 
 ## IMPORTING AND EXPORTING IN REACT/ES6 (EASY)
+
+https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
+
+## Exporting
+we have only two types of exports: *_named_* and *_default_*
+
+*Default* ones should be explicitally called default, by doing one of the following:
+Can only have 1 default PER module (file);
+
+- export default function myFunction() {}
+- export {MyFunction as default}
+- export default MyFunction
+
+
+*Named exports*:
+- export const MyFunction = () => {} 
+- export {MyFunction, AnotherFunction}
+- export {F1 as Func1}
+
+
+Combining both:
+- export {F1 as default, F2, F3}
+
+Exporting from:
+- export * from '..'
+- export * as namespace from '..'
+
+remember, export *' does not re-export a default export, only the named ones.
+
+## Importing:
+
+Default ones you don't  need the {}:
+
+import MyFunction from './fncs'
+
+importing the named ones:
+import {F1, F2, F3} from './fncs'
+
+importing combined:
+import D1, {F1, F2} from './fncs'
+
+
+importing everything at once
+import * from './exports'
+import * as MYE from './exports'
+
+renaming importing: 
+import {F1 as MYF1} from './fncs'
 
 Imagine these exports form a file called 'Test.tsx'
 
