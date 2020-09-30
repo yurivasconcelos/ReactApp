@@ -123,7 +123,7 @@ export const Main = () => {
 
 
 ## using functions outside your component is possible.
-
+`
 ```javascript
 //just a normal function anywhere
 const handleOutside = () => {
