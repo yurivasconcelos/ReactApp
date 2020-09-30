@@ -347,6 +347,8 @@ export const Sub3C = () => {
 
 ## IMPORTING AND EXPORTING IN REACT/ES6 (EASY)
 
+https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
+
 ## Exporting
 we have only two types of exports: *_named_* and *_default_*
 
