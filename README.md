@@ -13,6 +13,7 @@ npm start
 ```
 
 
+
 ```javascript
 import React, { useState, useContext, createContext } from "react";
 ```
@@ -20,6 +21,11 @@ import React, { useState, useContext, createContext } from "react";
 https://reactjs.org/docs/hello-world.html
 
 ## how to declare a functional component
+
+In React, function components are a simpler way to write components that only contain a render method and don’t have their own state. Instead of defining a class which extends React.Component, we can write a function that takes props as input and returns what should be rendered. Function components are less tedious to write than classes, and many components can be expressed this way.
+
+obs: they can now have lifecycle methods, state, etc via hooks
+
 ```javascript
 export const Fc = () => {
   return <div />;
@@ -50,6 +56,68 @@ export const Fcpevents = () => {
     console.log("clicked");
   };
   return <button onClick={handleBtnClick}></button>;
+};
+```
+
+## condition rendering:
+
+```javascript
+import React from "react";
+
+export const Main = () => {
+  return (
+    <div>
+      <p>{false && 'hey'}</p>
+      <p>{1==1 && 'hey x'}</p>
+    </div>
+  );
+};
+
+```
+
+## condition rendering example 2
+```javascript
+import React from "react";
+
+const ishttp = window.location.href == "yuri";
+
+export const Main = () => {
+  return (
+    <div>
+      {ishttp && <NewComponent/>}
+    </div>
+  );
+};
+
+const NewComponent = () => <div></div>
+```
+
+## lists rendering:
+
+```javascript
+import React, { useState, useEffect } from "react";
+
+export const Main = () => {
+  return (
+    <div>
+      <ul>
+      {[1,2,3].map(x=> <li>{x}</li>)}
+      </ul>
+    </div>
+  );
+};
+```
+
+```javascript
+import React, { useState, useEffect } from "react";
+
+export const Main = () => {
+  return (
+    <div>
+      <p>{false && 'hey'}</p>
+      <p>{1==1 && 'hey x'}</p>
+    </div>
+  );
 };
 ```
 
@@ -422,13 +490,37 @@ Delete the remaining empty function declaration.
 https://programmingwithmosh.com/javascript/react-lifecycle-methods/
 https://reactjs.org/docs/react-component.html
 
-functional components : https://reactjs.org/docs/hooks-effect.html
-
-![image](https://i2.wp.com/programmingwithmosh.com/wp-content/uploads/2018/10/Screen-Shot-2018-10-31-at-1.44.28-PM.png?ssl=1)
-
 Mounting – Birth of your component
 Update – Growth of your component
 Unmount – Death of your component
+
+
+Recap
+React component lifecycle has three categories – Mounting, Updating and Unmounting.
+The render() is the most used lifecycle method.
+It is a pure function.
+You cannot set state in render()
+
+The componentDidMount() happens as soon as your component is mounted.
+You can set state here but with caution.
+The componentDidUpdate() happens as soon as the updating happens.
+You can set state here but with caution.
+
+The componentWillUnmount() happens just before the component unmounts and is destroyed.
+This is a good place to cleanup all the data.
+You cannot set state here.
+
+The shouldComponentUpdate() can be used rarely.
+It can be called if you need to tell React not to re-render for a certain state or prop change.
+This needs to be used with caution only for certain performance optimizations.
+
+The two new lifecycle methods are getDerivedStateFromProps() and getSnapshotBeforeUpdate().
+They need to be used only occasionally.
+Not many examples are out there for these two methods and they are still being discussed and will have more references in the future.
+
+functional components : https://reactjs.org/docs/hooks-effect.html
+
+![image](https://i2.wp.com/programmingwithmosh.com/wp-content/uploads/2018/10/Screen-Shot-2018-10-31-at-1.44.28-PM.png?ssl=1)
 
 
 ## render()
@@ -467,45 +559,115 @@ https://stackoverflow.com/questions/44506207/reactjs-lifecycle-method-inside-a-f
 
 ```javascript
 
-import { useEffect, useRef } from "react";
+import React, { useState, useEffect } from 'react';
 
-export const componentDidMount = handler => {
-  return useEffect(() => {
-    return handler();
-  }, []);
-};
+export function Main() {
+  const [count, setCount] = useState(0);
 
-export const componentDidUpdate = (handler, deps) => {
-  const isInitialMount = useRef(true);
-
+  // Similar to componentDidMount and componentDidUpdate:
   useEffect(() => {
-    if (isInitialMount.current) {
-      isInitialMount.current = false;
-
-      return;
-    }
-
-    return handler();
-  }, deps);
-};
-Usage
-
-import { componentDidMount, componentDidUpdate } from "./utils";
-
-export const MyComponent = ({ myProp }) => {
-  componentDidMount(() => {
-    console.log("Component did mount!");
+    // Update the document title using the browser API
+    document.title = `You clicked ${count} times`;
   });
 
-  componentDidUpdate(() => {
-    console.log("Component did update!");
-  });
-
-  componentDidUpdate(() => {
-    console.log("myProp did update!");
-  }, [myProp]);
-};  
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
 ```
 
 
+## FORMS
 
+https://reactjs.org/docs/forms.html
+
+In HTML, form elements such as input, textarea, and select typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState().
+
+We can combine the two by making the React state be the “single source of truth”. Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a “controlled component”.
+
+
+
+
+```javascript
+import React, { useState, useEffect } from 'react';
+export class Main extends React.Component<any, any> {
+  constructor(props:any) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event: any) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event:any) {
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={this.state.value} onChange={this.handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+    );
+  }
+}
+
+```
+
+
+lists of courses from react website
+
+https://reactjs.org/community/courses.html
+
+really good tutorial: https://www.youtube.com/watch?v=Ke90Tje7VS0
+
+00:00 Introduction
+01:14 What is React
+05:48 Setting Up the Development Environment 
+09:27 Your First React App
+16:03 Hello World
+22:26 Components
+24:06 Setting Up the Project
+26:15 Your First React Component
+31:38 Specifying Children
+35:56 Embedding Expressions
+40:49 Setting Attributes
+46:36 Rendering Classes Dynamically
+50:57 Rendering Lists
+54:58 Conditional Rendering
+1:01:04 Handling Events
+1:03:56 Binding Event Handlers
+1:08:34 Updating the State
+1:10:51 What Happens When State Changes 
+1:12:58 Passing Event Arguments
+1:17:31 Composing Components
+1:21:18 Passing Data to Components
+1:24:31 Passing Children
+1:27:44 Debugging React Apps
+1:31:55 Props vs State
+1:34:22 Raising and Handling Events
+1:39:16 Updating the State
+1:43:57 Single Source of Truth
+1:47:55 Removing the Local State
+1:54:44 Multiple Components in Sync 
+2:00:39 Lifting the State Up
+2:06:18 Stateless Functional Components
+2:08:49 Destructuring Arguments
+2:10:52 Lifecycle Hooks
+2:12:32 Mounting Phase 
+2:18:09 Updating Phase 
+2:22:31 Unmounting Phase
