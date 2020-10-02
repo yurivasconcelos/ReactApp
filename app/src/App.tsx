@@ -1,31 +1,21 @@
 import React, { useState } from 'react';
 
+
 const App = () => {
-  const [name, setName] = useState('initial name');
-
-  const handleClick = (e: any) => {
-    setName('yuri');
-  };
-
-  const isYuri = name == 'yuri';
-
   return (
     <div>
-      <button onClick={handleClick}>click me</button>
-      {isYuri && <Test name={name} description='fromConditional' />}
-      {[1, 2, 3].map((x) => (
-        <Test name={name} fromLoop={true} description='fromLoop' />
-      ))}
+      <p>Hello World</p>
+      <Greeting name="YuriA"></Greeting>
     </div>
-  );
-};
+  )
+}
 
-const Test = (props: any) => {
-  return (
-    <div>
-      {props.name} - {props.description}
-    </div>
-  );
-};
+const Greeting = ({ name }: GreetingProps)  => {
+  return <h1>Hello {name}</h1>
+}
 
-export default App;
+type GreetingProps = {
+  name: string,
+}
+
+export default App

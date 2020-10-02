@@ -12,7 +12,10 @@ cd my-app
 npm start
 ```
 
+In React you have two ways of defining components.
 
+Writing a class and extending from Component
+Writing a function and returning JSX
 
 ```javascript
 import React, { useState, useContext, createContext } from "react";
@@ -160,7 +163,8 @@ export const FcwState = () => {
 };
 ```
 
-## How to declare a class component
+## How to declare a class componen
+
 
 ```javascript
 export class CComp extends React.Component {
@@ -230,6 +234,13 @@ class CCStateSet extends React.Component<{name:string}> {
     );
   }
 }
+```
+
+## Full State and events in Class components
+please read https://fettblog.eu/this-in-javascript-and-typescript/
+to understand the .bind() in javascript
+```javascript
+
 ```
 
 
@@ -444,6 +455,47 @@ import D, {A,C} from "./Test";
 then access using T.A(), T.B()..  for some reason the default one is called T.default, even though the name in the exported class is D
 
 
+## Default props
+
+```javascript
+DefaultProps is a relic from class-based React where you were able to set default values to your props. With function components, this is now basic JavaScript as you can see here. Still, you might get into some situations where setting defaultProps (or other static properties) is still necessary.
+
+Since version 3.1, TypeScript has a mechanism to understand defaultProps and can set default values based on the values you set. However, React.FC types defaultProps, and thus breaks the connection to use them as default values. So this one breaks:
+
+export const Greeting:FC<GreetingProps> = ({ name }) => {
+  // name is string!
+  return <h1>Hello {name}</h1>
+};
+
+Greeting.defaultProps = {
+  name: "World"
+};
+
+const App = () => <>
+  {/* Big boom 💥*/}
+  <Greeting />
+</>
+
+
+```
+
+How to set defaultValues in the class components
+```javascript
+class CatComponent extends React.Component {
+    constructor(props) {}
+    static defaultProps = {
+        catName: "Sandy",
+        eyeColor: "deepblue",
+        age: "120"        
+    }
+    render() {
+        return <div>{this.props.catName} Cat, Eye Color: {this.props.eyeColor }, Age: {this.props.age}</div>
+    }
+}
+```
+
+
+
 ## Composition and children:
 Basically you can pass a component to a compoment and then access it using the props.children
 https://reactjs.org/docs/composition-vs-inheritance.html
@@ -590,9 +642,6 @@ In HTML, form elements such as input, textarea, and select typically maintain th
 
 We can combine the two by making the React state be the “single source of truth”. Then the React component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by React in this way is called a “controlled component”.
 
-
-
-
 ```javascript
 import React, { useState, useEffect } from 'react';
 export class Main extends React.Component<any, any> {
@@ -627,6 +676,49 @@ export class Main extends React.Component<any, any> {
 }
 
 ```
+## Using React.FC<PropType>({destructprop}) 
+
+```javascript
+import React, { FC } from "react";
+
+type GreetingProps = {
+  name: string;
+}
+
+const Greeting:FC<GreetingProps> = ({ name }) => {
+  // name is string!
+  return <h1>Hello {name}</h1>
+};
+
+
+```
+## Another way to avoid the FC (if you want)
+```javascript
+
+
+import React, { useState } from 'react';
+
+
+const App = () => {
+  return (
+    <div>
+      <p>Hello World</p>
+      <Greeting name="YuriA"></Greeting>
+    </div>
+  )
+}
+
+const Greeting = ({ name }: GreetingProps)  => {
+  return <h1>Hello {name}</h1>
+}
+
+type GreetingProps = {
+  name: string,
+}
+
+export default App
+```
+
 
 
 lists of courses from react website
@@ -635,39 +727,4 @@ https://reactjs.org/community/courses.html
 
 really good tutorial: https://www.youtube.com/watch?v=Ke90Tje7VS0
 
-00:00 Introduction
-01:14 What is React
-05:48 Setting Up the Development Environment 
-09:27 Your First React App
-16:03 Hello World
-22:26 Components
-24:06 Setting Up the Project
-26:15 Your First React Component
-31:38 Specifying Children
-35:56 Embedding Expressions
-40:49 Setting Attributes
-46:36 Rendering Classes Dynamically
-50:57 Rendering Lists
-54:58 Conditional Rendering
-1:01:04 Handling Events
-1:03:56 Binding Event Handlers
-1:08:34 Updating the State
-1:10:51 What Happens When State Changes 
-1:12:58 Passing Event Arguments
-1:17:31 Composing Components
-1:21:18 Passing Data to Components
-1:24:31 Passing Children
-1:27:44 Debugging React Apps
-1:31:55 Props vs State
-1:34:22 Raising and Handling Events
-1:39:16 Updating the State
-1:43:57 Single Source of Truth
-1:47:55 Removing the Local State
-1:54:44 Multiple Components in Sync 
-2:00:39 Lifting the State Up
-2:06:18 Stateless Functional Components
-2:08:49 Destructuring Arguments
-2:10:52 Lifecycle Hooks
-2:12:32 Mounting Phase 
-2:18:09 Updating Phase 
-2:22:31 Unmounting Phase
+https://fettblog.eu/typescript-react-component-patterns/#preset-attributes
