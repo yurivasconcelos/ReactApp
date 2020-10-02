@@ -1,10 +1,22 @@
-import React from 'react';
+import React from "react";
+import { MouseOver } from "./components/MouseOver";
 
-
-function App() {
+const App = () => {
   return (
-   <div></div>
+    <div>
+      <MouseOver>
+        <DivComponent></DivComponent>
+      </MouseOver>
+    </div>
   );
-}
+};
+
+const DivComponent = () => {
+  return (
+    <div style={{ width: 100, backgroundColor: "grey", height: 200 }}>
+      <p>DIV COMPONENT!</p>
+    </div>
+  );
+};
 
 export default App;
